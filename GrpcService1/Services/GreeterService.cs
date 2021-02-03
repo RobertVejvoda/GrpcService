@@ -16,7 +16,7 @@ namespace GrpcService1
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            var currentDate = DateTime.Now;
+            var currentDate = DateTime.Now.ToUniversalTime();
             var birthDate = request.BirthDate.ToDateTime();
             var daysOnEarth = (currentDate - birthDate).Days;
             var message = $"Hello {request.FirstName} {request.LastName}, you are {daysOnEarth} days on Earth.";
